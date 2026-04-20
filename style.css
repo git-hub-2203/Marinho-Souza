@@ -16,34 +16,43 @@
     box-sizing: border-box;
 }
 
+html {
+    /* Esconde a barra de rolagem horizontal em telas menores */
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Inter', sans-serif;
-    
     background-color: #faf9f7;
-    background-image: none;
-    
     color: #1e1e1e;
-    
     line-height: 1.5;
-    
     scroll-behavior: smooth;
+    
+    /* TRAVA O SITE NO TAMANHO EXATO DO COMPUTADOR */
+    min-width: 1280px; 
+    
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
 }
 
 /* ========================================================================== */
-/* CONTROLE DE ESCALA (ZOOM VIEWPORT PARA O PC)                               */
+/* A MÁGICA: MODO PC NO CELULAR                                               */
 /* ========================================================================== */
 
-/* Aplica zoom de 90% apenas em resoluções de desktop maiores que 1025px */
-@media (min-width: 1025px) {
-    body { 
-        zoom: 90%; 
+/* No celular, o navegador vai calcular a redução exata para caber na tela.
+   Fica tudo idêntico ao PC, fino, elegante, sem nada gigante na cara. */
+@media (max-width: 1280px) {
+    html {
+        zoom: calc(100vw / 1280);
     }
 }
 
-/* Reseta o zoom para resoluções de tablet e mobile menores que 1024px */
-@media (max-width: 1024px) {
+/* O Boss gosta de 90% no PC, então mantemos isso para as telas grandes! */
+@media (min-width: 1281px) {
     body { 
-        zoom: 100%; 
+        zoom: 90%; 
     }
 }
 
@@ -74,10 +83,10 @@ h4 {
     margin-bottom: 0px;
     margin-left: auto;
     
-    padding-top: clamp(20px, 4vw, 50px);
-    padding-right: clamp(20px, 4vw, 50px);
-    padding-bottom: clamp(20px, 4vw, 50px);
-    padding-left: clamp(20px, 4vw, 50px);
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
 }
 
 /* ========================================================================== */
@@ -87,17 +96,14 @@ h4 {
 .navbar {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Trava tudo em uma linha */
     justify-content: space-between;
     align-items: center;
-    align-content: center;
     
-    gap: 16px;
-    
-    padding-top: clamp(12px, 2vw, 20px);
-    padding-right: clamp(16px, 4vw, 32px);
-    padding-bottom: clamp(12px, 2vw, 20px);
-    padding-left: clamp(16px, 4vw, 32px);
+    padding-top: 20px;
+    padding-right: 32px;
+    padding-bottom: 20px;
+    padding-left: 32px;
     
     background-color: rgb(93, 2, 2);
     
@@ -116,7 +122,7 @@ h4 {
     flex-direction: row;
     align-items: center;
     
-    gap: clamp(8px, 2vw, 14px);
+    gap: 14px;
     
     text-decoration-line: none;
     text-decoration-style: solid;
@@ -124,7 +130,7 @@ h4 {
 }
 
 .logo-mark {
-    width: clamp(45px, 6vw, 65px);
+    width: 65px;
     height: auto;
     
     object-fit: contain;
@@ -132,10 +138,10 @@ h4 {
     
     display: block;
     
-    padding-top: clamp(4px, 1vw, 10px);
-    padding-right: clamp(4px, 1vw, 10px);
-    padding-bottom: clamp(4px, 1vw, 10px);
-    padding-left: clamp(4px, 1vw, 10px);
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
 }
 
 .logo-text {
@@ -143,12 +149,12 @@ h4 {
     flex-direction: column;
     
     line-height: 1;
-    text-align: center;
+    text-align: left; /* Alinhamento elegante PC */
 }
 
 .logo-text strong {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 3vw, 30px);
+    font-size: 30px;
     font-weight: 700;
     
     letter-spacing: 0.5px;
@@ -156,7 +162,7 @@ h4 {
 }
 
 .logo-text span {
-    font-size: clamp(10px, 1.5vw, 15px);
+    font-size: 15px;
     font-weight: normal;
     
     letter-spacing: 2px;
@@ -178,15 +184,7 @@ h4 {
     flex-direction: row;
     align-items: center;
     
-    gap: clamp(16px, 3vw, 38px);
-    
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none; /* Firefox */
-}
-
-.nav-links::-webkit-scrollbar { 
-    display: none; /* Chrome, Safari, Edge */
+    gap: 38px; /* Espaço elegante do PC */
 }
 
 .nav-links a {
@@ -196,7 +194,7 @@ h4 {
     color: rgba(255, 255, 255, 0.85);
     
     letter-spacing: 0.4px;
-    font-size: clamp(0.9rem, 1.5vw, 1.1em);
+    font-size: 17px;
     font-weight: normal;
     white-space: nowrap;
     
@@ -208,12 +206,6 @@ h4 {
     transition-property: all;
     transition-duration: 0.25s;
     transition-timing-function: ease;
-    transition-delay: 0s;
-}
-
-.nav-links a span { 
-    position: relative; 
-    z-index: 1; 
 }
 
 .nav-links a::after {
@@ -250,7 +242,7 @@ h4 {
 
 .hero {
     width: 100%;
-    min-height: clamp(80vh, 100vh, 1000px);
+    min-height: 800px;
     
     display: flex; 
     flex-direction: row;
@@ -262,9 +254,9 @@ h4 {
     background-repeat: no-repeat;
     background-size: cover;
     
-    padding-top: clamp(48px, 6vw, 64px);
+    padding-top: 64px;
     padding-right: 0px;
-    padding-bottom: clamp(48px, 6vw, 64px);
+    padding-bottom: 64px;
     padding-left: 0px;
     
     overflow-x: hidden;
@@ -276,17 +268,15 @@ h4 {
     
     display: flex; 
     flex-direction: row;
+    flex-wrap: nowrap; /* Impede que empilhe */
     align-items: center; 
     justify-content: space-between;
-    flex-wrap: wrap; 
     
-    gap: clamp(32px, 5vw, 56px);
+    gap: 56px;
 }
 
 .hero-content { 
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: clamp(320px, 45%, 520px);
+    width: 50%; /* Mantém metade exata */
 }
 
 .hero-badge {
@@ -312,7 +302,7 @@ h4 {
     border-style: solid;
     border-color: rgba(255, 255, 255, 0.14);
     
-    font-size: clamp(12px, 1.5vw, 14px);
+    font-size: 14px;
     font-weight: 500; 
     letter-spacing: 0.3px; 
     
@@ -323,7 +313,7 @@ h4 {
 }
 
 .hero-content h1 {
-    font-size: clamp(38px, 6vw, 72px);
+    font-size: 72px; /* Mantém a elegância da fonte principal fina */
     line-height: 1.04; 
     color: #ffffff; 
     max-width: 700px;
@@ -344,13 +334,13 @@ h4 {
 }
 
 .hero-desc {
-    font-size: clamp(16px, 2vw, 19px); 
+    font-size: 19px; 
     color: #f2dede; 
     max-width: 580px;
     
     margin-top: 0px;
     margin-right: 0px;
-    margin-bottom: clamp(24px, 4vw, 40px);
+    margin-bottom: 40px;
     margin-left: 0px;
 }
 
@@ -366,17 +356,17 @@ h4 {
     
     gap: 12px;
     
-    padding-top: clamp(12px, 2vw, 16px);
-    padding-right: clamp(24px, 4vw, 32px);
-    padding-bottom: clamp(12px, 2vw, 16px);
-    padding-left: clamp(24px, 4vw, 32px);
+    padding-top: 16px;
+    padding-right: 32px;
+    padding-bottom: 16px;
+    padding-left: 32px;
     
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
     
-    font-size: clamp(16px, 2vw, 18px); 
+    font-size: 18px; 
     font-weight: 600; 
     
     text-decoration-line: none;
@@ -390,11 +380,10 @@ h4 {
     transition-property: all;
     transition-duration: 0.25s;
     transition-timing-function: ease;
-    transition-delay: 0s;
 }
 
 .btn-whatsapp-hero i { 
-    font-size: clamp(24px, 3vw, 30px); 
+    font-size: 30px; 
 }
 
 .btn-whatsapp-hero:hover { 
@@ -407,9 +396,7 @@ h4 {
 /* ========================================================================== */
 
 .hero-image {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: clamp(280px, 40%, 420px);
+    width: 50%;
     
     display: flex; 
     flex-direction: row;
@@ -427,7 +414,7 @@ h4 {
     padding-top: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
-    padding-left: clamp(0px, 4vw, 50px);
+    padding-left: 50px;
 }
 
 /* ========================================================================== */
@@ -436,7 +423,7 @@ h4 {
 
 .section-transition {
     position: relative; 
-    height: clamp(25vh, 40vh, 50vh);
+    height: 400px; /* Altura fixa para manter o banner consistente */
     
     background-size: cover; 
     background-position: center; 
@@ -469,9 +456,9 @@ h4 {
 /* ========================================================================== */
 
 #areas { 
-    padding-top: clamp(60px, 8vw, 95px); 
+    padding-top: 95px; 
     padding-right: 0px;
-    padding-bottom: clamp(60px, 8vw, 95px); 
+    padding-bottom: 95px; 
     padding-left: 0px;
 }
 
@@ -481,14 +468,14 @@ h4 {
     
     margin-top: 0px;
     margin-right: auto;
-    margin-bottom: clamp(32px, 5vw, 56px);
+    margin-bottom: 56px;
     margin-left: auto;
 }
 
 #areas .section-kicker { 
     display: inline-block; 
     
-    font-size: clamp(11px, 1.5vw, 13px); 
+    font-size: 13px; 
     font-weight: 700; 
     letter-spacing: 2.2px; 
     text-transform: uppercase; 
@@ -501,7 +488,7 @@ h4 {
 }
 
 #areas .section-title { 
-    font-size: clamp(36px, 5vw, 52px); 
+    font-size: 52px; 
     color: #16263a; 
     
     margin-top: 0px;
@@ -519,19 +506,20 @@ h4 {
     margin-left: auto;
     
     color: #5f6f82; 
-    font-size: clamp(15px, 2vw, 18px); 
+    font-size: 18px; 
     line-height: 1.8; 
 }
 
 /* ========================================================================== */
-/* GRID DE ÁREAS (CARDS)                                                      */
+/* GRID DE ÁREAS (CARDS SEMPRE 3 LADO A LADO, COMO NO PC)                     */
 /* ========================================================================== */
 
 .practice-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 22vw, 280px), 1fr));
+    /* Força exatamente 3 colunas independentemente da tela */
+    grid-template-columns: repeat(3, 1fr);
     
-    gap: clamp(16px, 3vw, 28px); 
+    gap: 28px; 
     
     margin-top: 0px;
     margin-right: 0px;
@@ -547,12 +535,12 @@ h4 {
     justify-content: flex-start;
     align-items: stretch;
     
-    min-height: clamp(280px, 30vw, 320px);
+    min-height: 320px;
     
-    padding-top: clamp(24px, 3vw, 32px);
-    padding-right: clamp(20px, 3vw, 28px);
-    padding-bottom: clamp(24px, 3vw, 32px);
-    padding-left: clamp(20px, 3vw, 28px);
+    padding-top: 32px;
+    padding-right: 28px;
+    padding-bottom: 32px;
+    padding-left: 28px;
     
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
@@ -601,8 +589,8 @@ h4 {
 }
 
 .practice-icon {
-    width: clamp(50px, 6vw, 72px); 
-    height: clamp(50px, 6vw, 72px); 
+    width: 72px; 
+    height: 72px; 
     
     display: inline-flex; 
     flex-direction: row;
@@ -618,7 +606,7 @@ h4 {
     background-color: transparent;
     
     color: #8c693f; 
-    font-size: clamp(20px, 3vw, 28px);
+    font-size: 28px;
     
     box-shadow: 0px 10px 24px 0px rgba(122, 16, 16, 0.08), 0px 1px 0px 0px rgba(255, 255, 255, 0.7) inset; 
     
@@ -637,7 +625,7 @@ h4 {
 }
 
 .practice-card h3 { 
-    font-size: clamp(22px, 3vw, 28px); 
+    font-size: 28px; 
     line-height: 1.15; 
     color: #16263a; 
     
@@ -648,7 +636,7 @@ h4 {
 }
 
 .practice-card p { 
-    font-size: clamp(14px, 1.5vw, 15.5px); 
+    font-size: 15px; 
     line-height: 1.85; 
     color: #5f6f82; 
     
@@ -665,9 +653,9 @@ h4 {
 #escritorio { 
     width: 100%; 
     
-    padding-top: clamp(60px, 8vw, 110px); 
+    padding-top: 110px; 
     padding-right: 0px;
-    padding-bottom: clamp(60px, 8vw, 110px);
+    padding-bottom: 110px;
     padding-left: 0px;
     
     background-image: linear-gradient(180deg, #f8f5f1 0%, #fdfbf9 100%); 
@@ -686,37 +674,40 @@ h4 {
     margin-left: auto;
     
     padding-top: 0px;
-    padding-right: clamp(20px, 4vw, 42px);
+    padding-right: 42px;
     padding-bottom: 0px;
-    padding-left: clamp(20px, 4vw, 42px);
+    padding-left: 42px;
 }
 
 #escritorio .office-layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(300px, 40vw, 420px), 1fr));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; /* Trava lado a lado */
     align-items: stretch;
     
-    gap: clamp(32px, 5vw, 56px); 
+    gap: 56px; 
     
     margin-top: 0px;
     margin-right: 0px;
-    margin-bottom: clamp(40px, 6vw, 64px);
+    margin-bottom: 64px;
     margin-left: 0px;
 }
 
 #escritorio .office-content { 
+    width: 50%;
+    
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
     
     padding-top: 0px;
-    padding-right: clamp(0px, 2vw, 10px); 
+    padding-right: 10px; 
     padding-bottom: 0px;
     padding-left: 0px;
 }
 
 #escritorio .section-title { 
-    font-size: clamp(38px, 5vw, 64px); 
+    font-size: 64px; 
     line-height: 0.98; 
     color: #16263a; 
     text-align: left; 
@@ -741,7 +732,7 @@ h4 {
 }
 
 #escritorio .about-text p { 
-    font-size: clamp(16px, 2vw, 18px); 
+    font-size: 18px; 
     line-height: 1.95; 
     color: #5f6f82; 
     text-align: justify; 
@@ -759,20 +750,18 @@ h4 {
 #escritorio .office-highlight-row { 
     display: flex; 
     flex-direction: row;
-    flex-wrap: wrap; 
+    flex-wrap: nowrap; /* Trava as estatísticas em uma linha */
     
     gap: 16px; 
 }
 
 #escritorio .office-mini-card {
     flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 200px;
     
-    padding-top: clamp(16px, 2vw, 20px);
-    padding-right: clamp(16px, 2vw, 22px);
-    padding-bottom: clamp(16px, 2vw, 20px);
-    padding-left: clamp(16px, 2vw, 22px);
+    padding-top: 20px;
+    padding-right: 22px;
+    padding-bottom: 20px;
+    padding-left: 22px;
     
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
@@ -795,7 +784,7 @@ h4 {
     display: block; 
     
     font-family: 'Cormorant Garamond', serif; 
-    font-size: clamp(26px, 3vw, 34px); 
+    font-size: 34px; 
     line-height: 1; 
     color: #7a1010; 
     
@@ -808,20 +797,20 @@ h4 {
 #escritorio .office-mini-card span { 
     display: block; 
     
-    font-size: clamp(13px, 1.5vw, 15px); 
+    font-size: 15px; 
     line-height: 1.6; 
     color: #5f6f82; 
 }
 
-/* ========================================================================== */
 /* ========================================================================== */
 /* IMAGEM E BADGE DO ESCRITÓRIO                                               */
 /* ========================================================================== */
 
 #escritorio .office-image-wrap { 
     position: relative; 
+    width: 50%;
     
-    min-height: clamp(360px, 40vw, 680px); 
+    min-height: 680px; 
     
     display: flex; 
     flex-direction: row;
@@ -849,18 +838,18 @@ h4 {
 #escritorio .office-badge {
     position: absolute; 
     
-    right: clamp(10px, 2vw, 28px); 
-    bottom: clamp(10px, 2vw, 28px); 
+    right: 28px; 
+    bottom: 28px; 
     
     max-width: 280px;
     
     background-color: rgba(122, 16, 16, 0.92); 
     color: #ffffff; 
     
-    padding-top: clamp(16px, 2vw, 24px);
-    padding-right: clamp(16px, 2vw, 24px);
-    padding-bottom: clamp(16px, 2vw, 24px);
-    padding-left: clamp(16px, 2vw, 24px);
+    padding-top: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+    padding-left: 24px;
     
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -874,7 +863,7 @@ h4 {
 }
 
 #escritorio .office-badge h4 { 
-    font-size: clamp(24px, 3vw, 32px); 
+    font-size: 32px; 
     line-height: 1; 
     color: #ffffff; 
     
@@ -885,17 +874,18 @@ h4 {
 }
 
 /* ========================================================================== */
-/* TIMELINE (LINHA DO TEMPO)                                                  */
+/* TIMELINE (LINHA DO TEMPO EM UMA ÚNICA LINHA)                               */
 /* ========================================================================== */
 
 #escritorio .office-timeline {
     position: relative; 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 20vw, 250px), 1fr));
+    /* Trava 4 colunas rígidas em linha, sem quebrar para baixo */
+    grid-template-columns: repeat(4, 1fr);
     
-    gap: clamp(24px, 4vw, 28px); 
+    gap: 28px; 
     
-    padding-top: clamp(15px, 2vw, 30px);
+    padding-top: 30px;
     padding-right: 0px;
     padding-bottom: 0px;
     padding-left: 0px;
@@ -941,12 +931,12 @@ h4 {
     
     margin-top: 0px;
     margin-right: 0px;
-    margin-bottom: clamp(16px, 2vw, 26px);
+    margin-bottom: 26px;
     margin-left: 0px;
 }
 
 #escritorio .timeline-item h4 { 
-    font-size: clamp(22px, 2.5vw, 28px); 
+    font-size: 28px; 
     color: #16263a; 
     
     margin-top: 0px;
@@ -956,7 +946,7 @@ h4 {
 }
 
 #escritorio .timeline-item p { 
-    font-size: clamp(14px, 1.5vw, 15px); 
+    font-size: 15px; 
     color: #5f6f82; 
     
     margin-top: 0px;
@@ -972,14 +962,14 @@ h4 {
 .testimonials { 
     background-color: #ede7e0; 
     
-    border-top-left-radius: clamp(32px, 5vw, 64px);
-    border-top-right-radius: clamp(32px, 5vw, 64px);
+    border-top-left-radius: 64px;
+    border-top-right-radius: 64px;
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
     
-    padding-top: clamp(40px, 6vw, 64px);
+    padding-top: 64px;
     padding-right: 0px;
-    padding-bottom: clamp(40px, 6vw, 64px);
+    padding-bottom: 64px;
     padding-left: 0px;
     
     margin-top: 40px;
@@ -990,18 +980,19 @@ h4 {
 
 .testimonials-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 25vw, 280px), 1fr)); 
+    /* Trava 3 cartões exatamente lado a lado */
+    grid-template-columns: repeat(3, 1fr); 
     
-    gap: clamp(20px, 4vw, 32px); 
+    gap: 32px; 
 }
 
 .testimonial-card { 
     background-color: #ffffff; 
     
-    padding-top: clamp(24px, 4vw, 36px);
-    padding-right: clamp(20px, 3vw, 28px);
-    padding-bottom: clamp(24px, 4vw, 36px);
-    padding-left: clamp(20px, 3vw, 28px);
+    padding-top: 36px;
+    padding-right: 28px;
+    padding-bottom: 36px;
+    padding-left: 28px;
     
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
@@ -1013,7 +1004,7 @@ h4 {
 
 .testimonial-card i { 
     color: #b68b5c; 
-    font-size: clamp(22px, 3vw, 28px); 
+    font-size: 28px; 
     opacity: 0.8; 
     
     margin-top: 0px;
@@ -1023,7 +1014,7 @@ h4 {
 }
 
 .testimonial-card p { 
-    font-size: clamp(15px, 2vw, 17px); 
+    font-size: 17px; 
     font-style: italic; 
     
     margin-top: 0px;
@@ -1033,25 +1024,31 @@ h4 {
 }
 
 /* ========================================================================== */
-/* SEÇÃO DE CONTATOS E MAPA                                                   */
+/* SECÇÃO DE CONTACTOS E A CORREÇÃO DO MAPA                                   */
 /* ========================================================================== */
 
 .contact-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(300px, 40vw, 450px), 1fr));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; /* Obriga a não empilhar jamais */
     align-items: stretch;
+    justify-content: space-between;
     
-    gap: clamp(32px, 5vw, 60px); 
+    gap: 60px; 
+    height: 620px; /* Trava a altura máxima do bloco para não vazar para o rodapé */
 }
 
 .contact-card {
+    width: 50%; /* Cada um ocupa metade exata do ecrã */
+    height: 100%;
+    
     background-image: linear-gradient(180deg, #ffffff, #f9f6f2);
     background-color: transparent;
     
-    padding-top: clamp(32px, 5vw, 50px);
-    padding-right: clamp(32px, 5vw, 50px);
-    padding-bottom: clamp(32px, 5vw, 50px);
-    padding-left: clamp(32px, 5vw, 50px);
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
     
     border-top-left-radius: 28px;
     border-top-right-radius: 28px;
@@ -1069,7 +1066,7 @@ h4 {
 }
 
 .contact-card h2 { 
-    font-size: clamp(32px, 5vw, 48px); 
+    font-size: 48px; 
     
     margin-top: 0px;
     margin-right: 0px;
@@ -1079,12 +1076,12 @@ h4 {
 
 .contact-sub { 
     color: #5f6f82; 
-    font-size: clamp(15px, 2vw, 16px); 
+    font-size: 16px; 
     line-height: 1.7; 
     
     margin-top: 0px;
     margin-right: 0px;
-    margin-bottom: clamp(24px, 4vw, 40px);
+    margin-bottom: 40px;
     margin-left: 0px;
 }
 
@@ -1136,10 +1133,10 @@ h4 {
     
     gap: 12px; 
     
-    padding-top: clamp(12px, 2vw, 16px);
-    padding-right: clamp(20px, 3vw, 28px);
-    padding-bottom: clamp(12px, 2vw, 16px);
-    padding-left: clamp(20px, 3vw, 28px);
+    padding-top: 16px;
+    padding-right: 28px;
+    padding-bottom: 16px;
+    padding-left: 28px;
     
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
@@ -1151,7 +1148,7 @@ h4 {
     
     color: #ffffff; 
     font-weight: 600; 
-    font-size: clamp(15px, 2vw, 16px);
+    font-size: 16px;
     text-decoration-line: none;
     
     box-shadow: 0px 10px 24px 0px rgba(37, 211, 102, 0.4); 
@@ -1167,13 +1164,20 @@ h4 {
 }
 
 /* ========================================================================== */
-/* ESTILIZAÇÃO DO MAPA E ABAS DO MAPA                                         */
+/* ESTILIZAÇÃO DA CAIXA DO MAPA                                               */
 /* ========================================================================== */
+
+.contact-map {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
 .map-tabs { 
     display: flex; 
     flex-direction: row;
-    flex-wrap: wrap; 
+    flex-wrap: nowrap; 
     
     gap: 12px; 
     
@@ -1224,8 +1228,7 @@ h4 {
 
 .contact-map iframe { 
     width: 100%; 
-    height: 100%; 
-    min-height: clamp(350px, 50vw, 640px); 
+    flex-grow: 1; /* Preenche de forma inteligente apenas a área disponível */
     
     border-top-width: 0px;
     border-right-width: 0px;
@@ -1248,7 +1251,7 @@ footer {
     background-color: #6d0101; 
     color: #d9d2c9; 
     
-    padding-top: clamp(32px, 5vw, 48px);
+    padding-top: 48px;
     padding-right: 0px;
     padding-bottom: 24px;
     padding-left: 0px;
@@ -1256,9 +1259,10 @@ footer {
 
 .footer-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 20vw, 250px), 1fr)); 
+    /* Trava 4 colunas rígidas e intocáveis */
+    grid-template-columns: 250px 1fr 1fr 1fr;
     
-    gap: clamp(24px, 4vw, 40px); 
+    gap: 40px; 
     
     margin-top: 0px;
     margin-right: 0px;
@@ -1268,7 +1272,7 @@ footer {
 
 .footer-brand img { 
     width: 100%; 
-    max-width: clamp(200px, 30vw, 300px); 
+    max-width: 300px; 
     
     display: block; 
     
@@ -1289,7 +1293,7 @@ footer {
     padding-left: 0px;
     
     text-align: center; 
-    font-size: clamp(13px, 1.5vw, 15px); 
+    font-size: 15px; 
 }
 
 #inicio, 
@@ -1311,8 +1315,8 @@ footer {
     bottom: 25px; 
     right: 25px;
     
-    width: clamp(50px, 6vw, 60px); 
-    height: clamp(50px, 6vw, 60px);
+    width: 60px; 
+    height: 60px;
     
     background-image: linear-gradient(135deg, #25D366, #1ebe5d); 
     background-color: transparent;
@@ -1328,7 +1332,7 @@ footer {
     align-items: center; 
     justify-content: center;
     
-    font-size: clamp(24px, 4vw, 28px); 
+    font-size: 28px; 
     text-decoration-line: none;
     
     box-shadow: 0px 10px 25px 0px rgba(37, 211, 102, 0.5); 
@@ -1343,45 +1347,5 @@ footer {
 .whatsapp-float:hover { 
     transform: scale(1.1) translateY(-3px); 
     box-shadow: 0px 14px 32px 0px rgba(37, 211, 102, 0.7); 
-}
-
-/* ========================================================================== */
-/* MEDIA QUERIES (REGRAS EXTRAS DE SEGURANÇA PARA TELAS EXTREMAMENTE PEQUENAS)*/
-/* ========================================================================== */
-
-@media (max-width: 480px) {
-    .navbar { 
-        flex-direction: column; 
-        text-align: center; 
     }
     
-    .logo { 
-        flex-direction: column; 
-    }
-    
-    .nav-links { 
-        width: 100%; 
-        justify-content: flex-start; 
-        padding-bottom: 8px;
-    }
-    
-    .hero-image img { 
-        padding-left: 0px; 
-    }
-    
-    .contact-whatsapp { 
-        width: 100%; 
-        justify-content: center; 
-    }
-    
-    #escritorio .timeline-track { 
-        display: none; 
-    }
-    
-    #escritorio .office-badge { 
-        position: relative; 
-        right: 0px; 
-        bottom: 0px; 
-        margin-top: -30px; 
-    }
-}
