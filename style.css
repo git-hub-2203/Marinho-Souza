@@ -137,8 +137,10 @@ h4 {
     line-height: 1;
 }
 
-.logo-text h1 {
+.logo-text strong {
     font-size: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
     letter-spacing: 1.5px;
 }
 
@@ -191,7 +193,7 @@ h4 {
 
 .hero {
     width: 100%;
-    height: 115vh;
+    min-height: 100svh;
 
     display: flex;
     align-items: center;
@@ -234,6 +236,7 @@ h4 {
     color: #f2dede;
     max-width: 580px;
     line-height: 1.8;
+    text-wrap: balance;
 }
 
 .hero-cta {
@@ -295,6 +298,7 @@ h4 {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    text-align: center;
 }
 
 .hero-metric strong {
@@ -1047,7 +1051,8 @@ footer a {
 
     .hero {
         min-height: auto;
-        padding-top: 150px;
+        height: auto;
+        padding-top: 170px;
     }
 
     .hero-content {
@@ -1100,15 +1105,17 @@ footer a {
 @media (max-width: 820px) {
     .navbar {
         width: 100%;
-        padding: 12px 14px;
+        padding: 14px 14px 12px;
         border-radius: 0;
         flex-wrap: wrap;
         justify-content: center;
+        row-gap: 12px;
     }
 
     .logo {
         width: 100%;
         justify-content: center;
+        gap: 12px;
     }
 
     .logo-text {
@@ -1117,10 +1124,17 @@ footer a {
 
     .nav-links {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
-        gap: 4px;
+        gap: 8px;
         width: 100%;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
     }
 
     .container {
@@ -1257,10 +1271,11 @@ footer a {
     .nav-links a {
         padding: 12px 10px;
         font-size: 0.96rem;
+        white-space: nowrap;
     }
 
     .hero {
-        padding: 40px 0 28px;
+        padding: 24px 0 28px;
     }
 
     .hero-content h1 {
@@ -1291,6 +1306,10 @@ footer a {
 
     .hero-image img {
         width: min(88%, 340px);
+    }
+
+    .hero-metrics {
+        gap: 14px;
     }
 
     #areas.container,
@@ -1446,20 +1465,45 @@ footer a {
         padding: 10px 10px 12px;
     }
 
+    .logo {
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo-mark {
+        width: 60px;
+    }
+
+    .logo-text strong {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    .logo-text span {
+        margin-top: 4px;
+        font-size: 0.58rem;
+        letter-spacing: 0.14em;
+    }
+
     .nav-links {
-        gap: 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+        overflow: visible;
     }
 
     .nav-links a {
-        padding: 10px 8px;
-        font-size: 0.9rem;
+        padding: 10px 6px;
+        font-size: 0.88rem;
+        text-align: center;
     }
 
     .hero {
-        padding-top: 32px;
+        padding-top: 20px;
     }
 
     .hero-metrics {
+        grid-template-columns: 1fr;
         gap: 12px;
     }
 
