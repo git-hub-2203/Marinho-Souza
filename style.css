@@ -654,258 +654,149 @@ h4 {
     margin-left: 0px;
 }
 
-/* ========================================================================== */
-/* SOBRE O ESCRITÓRIO - LAYOUT IGUAL AO PRINT                                 */
-/* ========================================================================== */
+/* ===== SOBRE O ESCRITÓRIO ===== */
 
 #escritorio {
     width: 100%;
-    padding: 90px 0 70px;
-    background: #f7f5f3;
+    background: linear-gradient(180deg, #f8f5f1 0%, #fdfbf9 100%);
     overflow: hidden;
 }
 
 #escritorio .office-shell {
-    width: min(100%, 1360px);
+    width: min(100%, 1600px);
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 42px;
 }
 
 #escritorio .office-layout {
     display: grid;
-    grid-template-columns: 1fr 1.18fr;
-    align-items: start;
-    gap: 72px;
+    grid-template-columns: minmax(420px, 0.95fr) minmax(420px, 1.15fr);
+    gap: 56px;
+    align-items: stretch;
+    margin-bottom: 64px;
 }
 
+/* CONTEÚDO */
 #escritorio .office-content {
-    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 10px;
+}
+
+#escritorio .office-kicker {
+    display: inline-block;
+    margin-bottom: 16px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.6px;
+    text-transform: uppercase;
+    color: #b68b5c;
 }
 
 #escritorio .section-title {
-    font-size: 72px;
-    line-height: 0.95;
+    margin: 0 0 26px;
+    font-size: 64px;
+    line-height: 0.98;
     color: #16263a;
-    margin: 0 0 28px;
-    letter-spacing: -0.02em;
+    text-align: left;
 }
 
 #escritorio .about-text {
-    max-width: 620px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    margin: 0 0 42px;
+    gap: 22px;
+    max-width: 640px;
+    margin-bottom: 34px;
 }
 
 #escritorio .about-text p {
-    font-size: 17px;
-    line-height: 1.85;
-    color: #607086;
-    text-align: justify;
     margin: 0;
+    font-size: 18px;
+    line-height: 1.95;
+    color: #5f6f82;
+    text-align: justify;
 }
 
-/* cards em grade 2x2 como na imagem */
 #escritorio .office-highlight-row {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(210px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 16px;
-    max-width: 500px;
 }
 
 #escritorio .office-mini-card {
-    min-height: 132px;
-    background: #fbfbfb;
-    border: 1px solid #e8ddd2;
+    min-width: 250px;
+    padding: 20px 22px;
     border-radius: 18px;
-    padding: 18px 20px 16px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-#escritorio .office-mini-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.06);
-    border-color: #dccbbb;
-}
-
-#escritorio .office-mini-card i {
-    font-size: 24px;
-    color: #16263a;
-    margin-bottom: 14px;
-    display: block;
+    background: #ffffff;
+    border: 1px solid #ece3d8;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
 }
 
 #escritorio .office-mini-card strong {
     display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    line-height: 1;
-    color: #8b2b14;
-    margin: 0 0 8px;
-}
-
-#escritorio .office-mini-card span {
-    display: block;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #607086;
-}
-
-/* imagem */
-#escritorio .office-image-wrap {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-}
-
-#escritorio-img {
-    width: 100%;
-    max-width: 720px;
-    height: 595px;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    border-radius: 28px;
-    box-shadow: none;
-}
-
-/* remove timeline para ficar igual ao print */
-#escritorio .office-timeline {
-    display: none;
-}
-
-/* ========================================================================== */
-/* CARDS DE DESTAQUE DO ESCRITÓRIO                                            */
-/* ========================================================================== */
-
-#escritorio .office-highlight-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    /* Trava as estatísticas em uma linha */
-
-    gap: 16px;
-}
-
-#escritorio .office-mini-card {
-    flex-grow: 1;
-
-    padding-top: 20px;
-    padding-right: 22px;
-    padding-bottom: 20px;
-    padding-left: 22px;
-
-    border-top-left-radius: 18px;
-    border-top-right-radius: 18px;
-    border-bottom-right-radius: 18px;
-    border-bottom-left-radius: 18px;
-
-    background-color: #ffffff;
-
-    border-top-width: 1px;
-    border-right-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-style: solid;
-    border-color: #ece3d8;
-
-    box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.05);
-}
-
-#escritorio .office-mini-card strong {
-    display: block;
-
+    margin-bottom: 8px;
     font-family: 'Cormorant Garamond', serif;
     font-size: 34px;
     line-height: 1;
     color: #7a1010;
-
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 8px;
-    margin-left: 0px;
 }
 
 #escritorio .office-mini-card span {
     display: block;
-
     font-size: 15px;
     line-height: 1.6;
     color: #5f6f82;
 }
 
-/* ========================================================================== */
-/* IMAGEM E BADGE DO ESCRITÓRIO                                               */
-/* ========================================================================== */
+#escritorio .office-mini-card i {
+    color: #16263a;
+    ;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
 
+/* IMAGEM */
 #escritorio .office-image-wrap {
     position: relative;
-    width: 50%;
-
     min-height: 680px;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 }
 
 #escritorio-img {
     width: 100%;
-    height: auto;
-    max-height: 600px;
-
+    margin-top: 150px;
+    height: 70%;
     object-fit: cover;
-    object-position: center;
-
+    border-radius: 28px;
     display: block;
-
-    border-top-left-radius: 28px;
-    border-top-right-radius: 28px;
-    border-bottom-right-radius: 28px;
-    border-bottom-left-radius: 28px;
-
-    box-shadow: 0px 24px 50px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
 }
 
 #escritorio .office-badge {
     position: absolute;
-
     right: 28px;
     bottom: 28px;
-
     max-width: 280px;
-
-    background-color: rgba(122, 16, 16, 0.92);
+    background: rgba(122, 16, 16, 0.92);
     color: #ffffff;
-
-    padding-top: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    padding-left: 24px;
-
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-
-    box-shadow: 0px 16px 34px 0px rgba(0, 0, 0, 0.18);
-
+    padding: 24px 24px;
+    border-radius: 20px;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
 }
 
 #escritorio .office-badge h4 {
+    margin: 0 0 10px;
     font-size: 32px;
     line-height: 1;
     color: #ffffff;
+}
 
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 10px;
-    margin-left: 0px;
+#escritorio .office-badge p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.92);
 }
 
 /* ========================================================================== */
@@ -919,17 +810,12 @@ h4 {
     grid-template-columns: repeat(4, 1fr);
 
     gap: 28px;
-
-    padding-top: 30px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
 }
 
 #escritorio .timeline-track {
     position: absolute;
 
-    top: 42px;
+    top: 10px;
     left: 0px;
     right: 0px;
 
