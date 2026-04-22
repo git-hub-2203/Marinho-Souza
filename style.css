@@ -39,6 +39,7 @@ body {
     color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
+    zoom: 90%;
 }
 
 img {
@@ -193,7 +194,7 @@ h4 {
 
 .hero {
     width: 100%;
-    min-height: 100svh;
+    min-height: 115svh;
 
     display: flex;
     align-items: center;
@@ -1019,7 +1020,7 @@ footer a {
 }
 
 #contato {
-    scroll-margin-top: 110px;
+    scroll-margin-top: 180px;
 }
 
 .whatsapp-float {
@@ -1059,6 +1060,11 @@ footer a {
         text-align: center;
     }
 
+    .hero-image {
+        order: -1;
+        margin-bottom: 8px;
+    }
+
     .hero-desc,
     .hero-metrics {
         margin-left: auto;
@@ -1067,6 +1073,10 @@ footer a {
 
     .hero-cta {
         justify-content: center;
+    }
+
+    .hero-image img {
+        width: min(72%, 300px);
     }
 
     #areas {
@@ -1116,9 +1126,11 @@ footer a {
         width: 100%;
         justify-content: center;
         gap: 12px;
+        flex-wrap: wrap;
     }
 
     .logo-text {
+        min-width: 0;
         text-align: center;
     }
 
@@ -1144,6 +1156,10 @@ footer a {
 
     .hero-content h1 {
         font-size: clamp(2.6rem, 12vw, 4rem);
+    }
+
+    .hero-desc {
+        max-width: 40rem;
     }
 
     .hero-metrics,
@@ -1259,13 +1275,22 @@ footer a {
         width: 72px;
     }
 
+    .logo-text {
+        max-width: min(100%, 260px);
+    }
+
     .logo-text strong {
-        font-size: 1.45rem;
+        font-size: clamp(1.1rem, 5vw, 1.45rem);
+        letter-spacing: 0.08em;
+        line-height: 1.05;
+        white-space: normal;
+        text-wrap: balance;
     }
 
     .logo-text span {
-        font-size: 0.66rem;
-        letter-spacing: 0.16em;
+        font-size: clamp(0.58rem, 2.3vw, 0.66rem);
+        letter-spacing: 0.12em;
+        line-height: 1.35;
     }
 
     .nav-links a {
@@ -1275,12 +1300,22 @@ footer a {
     }
 
     .hero {
-        padding: 24px 0 28px;
+        padding: 148px 0 28px;
+    }
+
+    .hero-inner {
+        gap: 20px;
     }
 
     .hero-content h1 {
         margin-bottom: 20px;
         font-size: clamp(2.2rem, 11.5vw, 3.2rem);
+    }
+
+    .hero-desc {
+        max-width: 32rem;
+        padding: 0 4px;
+        text-wrap: pretty;
     }
 
     .btn-whatsapp-hero,
@@ -1305,7 +1340,7 @@ footer a {
     }
 
     .hero-image img {
-        width: min(88%, 340px);
+        width: min(84%, 300px);
     }
 
     .hero-metrics {
@@ -1468,21 +1503,27 @@ footer a {
     .logo {
         align-items: center;
         gap: 10px;
+        flex-wrap: nowrap;
     }
 
     .logo-mark {
-        width: 60px;
+        width: 52px;
+        flex-shrink: 0;
+    }
+
+    .logo-text {
+        max-width: 220px;
     }
 
     .logo-text strong {
-        font-size: 1.2rem;
-        letter-spacing: 1px;
+        font-size: clamp(0.96rem, 5.2vw, 1.12rem);
+        letter-spacing: 0.06em;
     }
 
     .logo-text span {
         margin-top: 4px;
-        font-size: 0.58rem;
-        letter-spacing: 0.14em;
+        font-size: clamp(0.5rem, 2.5vw, 0.56rem);
+        letter-spacing: 0.1em;
     }
 
     .nav-links {
@@ -1499,7 +1540,22 @@ footer a {
     }
 
     .hero {
-        padding-top: 20px;
+        padding-top: 142px;
+    }
+
+    .hero-inner {
+        gap: 16px;
+    }
+
+    .hero-image {
+        margin-bottom: 0;
+    }
+
+    .hero-desc {
+        max-width: 100%;
+        padding: 0;
+        font-size: 0.94rem;
+        line-height: 1.65;
     }
 
     .hero-metrics {
