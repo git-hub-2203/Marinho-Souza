@@ -946,6 +946,7 @@ h4 {
     padding: 0 4px;
     overflow: hidden;
     transition: transform 0.3s ease;
+    border-bottom: 5px solid black;
 }
 
 .timeline-item::before {
@@ -955,7 +956,7 @@ h4 {
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 26px;
+    /*border-radius: 26px;*/
     background: linear-gradient(90deg, rgba(111, 13, 18, 0.94), rgba(143, 29, 34, 0.92));
     transform: scaleX(0);
     transform-origin: left center;
@@ -1338,6 +1339,7 @@ footer a {
     z-index: 1000;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
 
 @media (max-width: 1180px) {
 
