@@ -70,5 +70,5 @@ function trocarMapa(unidade, botao) {
         const previousActive = activeSlide;
         activeSlide = inactiveSlide;
         inactiveSlide = previousActive;
-    }, 2500);
+    }, 3600);
 })();
