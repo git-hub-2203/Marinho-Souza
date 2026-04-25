@@ -39,11 +39,11 @@ body {
     color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
+    zoom: 90%;
 }
 
 img {
     max-width: 100%;
-    height: auto;
 }
 
 a {
@@ -224,7 +224,6 @@ h4 {
 
 .hero-content {
     color: #fff;
-    min-width: 0;
 }
 
 
@@ -610,7 +609,6 @@ h4 {
     width: 100%;
     max-width: 720px;
     justify-self: end;
-    min-width: 0;
 }
 
 .office-kicker {
@@ -850,13 +848,11 @@ h4 {
     align-items: center;
     justify-content: center;
     justify-self: center;
-    min-width: 0;
 }
 
 .office-image-panel {
-    width: min(80vh, 100%, 720px);
-    aspect-ratio: 1 / 1;
-    height: auto;
+    width: 80vh;
+    height: 80vh;
     position: relative;
     padding: 18px;
     border-radius: 38px;
@@ -1077,7 +1073,6 @@ h4 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-width: 0;
     padding: 28px 30px;
     border: 1px solid rgba(111, 13, 18, 0.08);
     background: #6d0101;
@@ -1121,10 +1116,6 @@ h4 {
     transition: 0.3s ease-out all;
 }
 
-.contact-item>div {
-    min-width: 0;
-}
-
 .contact-item:hover {
     transform: translateY(-5px);
 }
@@ -1150,7 +1141,6 @@ h4 {
 
 .contact-item span {
     color: var(--muted);
-    overflow-wrap: anywhere;
 }
 
 .contact-whatsapp {
@@ -1164,7 +1154,6 @@ h4 {
 .contact-map {
     display: flex;
     flex-direction: column;
-    min-width: 0;
     min-height: 460px;
 }
 
@@ -1297,7 +1286,6 @@ footer a {
     color: rgba(255, 255, 255, 0.74);
     text-decoration: none;
     line-height: 1.9;
-    overflow-wrap: anywhere;
 }
 
 .copyright {
@@ -1344,9 +1332,10 @@ footer a {
         grid-template-columns: 1fr;
     }
 
-    .hero,
-    .parallax-img {
-        background-attachment: scroll;
+    .office-layout {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 40px;
     }
 
     .hero {
@@ -1399,22 +1388,17 @@ footer a {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .office-image-wrap {
-        order: -1;
-        width: 100%;
-    }
-
-    .office-layout {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
     .office-content {
         max-width: 100%;
     }
 
+    .office-image-wrap {
+        order: 2;
+    }
+
     .office-image-panel {
-        width: min(100%, 620px);
+        width: min(100%, 760px);
+        height: auto;
         margin: 0 auto;
     }
 
@@ -1453,21 +1437,16 @@ footer a {
     .nav-links {
         display: flex;
         flex-wrap: nowrap;
-        justify-content: flex-start;
+        justify-content: center;
         gap: 8px;
         width: 100%;
         overflow-x: auto;
         padding-bottom: 2px;
-        scroll-padding-inline: 12px;
         scrollbar-width: none;
     }
 
     .nav-links::-webkit-scrollbar {
         display: none;
-    }
-
-    .nav-links a {
-        flex: 0 0 auto;
     }
 
     .container {
@@ -1515,8 +1494,17 @@ footer a {
         width: min(100% - 24px, 1440px);
     }
 
+    .office-content {
+        order: 1;
+    }
+
+    .office-image-wrap {
+        order: 2;
+    }
+
     .office-image-panel {
-        width: min(100%, 560px);
+        width: 100%;
+        height: auto;
         padding: 14px;
         border-radius: 28px;
     }
@@ -1529,6 +1517,7 @@ footer a {
     .office-image-stage {
         min-height: 360px;
         max-height: 480px;
+        aspect-ratio: 4 / 5;
     }
 
     .office-image-badge {
@@ -1576,16 +1565,6 @@ footer a {
         text-align: center;
     }
 
-    .testimonials-header>div {
-        flex-direction: column;
-        gap: 18px !important;
-    }
-
-    .testimonials-header img {
-        width: min(180px, 65%) !important;
-        height: auto !important;
-    }
-
     .section-transition {
         background-attachment: scroll;
     }
@@ -1596,10 +1575,6 @@ footer a {
 
     .footer-grid {
         gap: 22px;
-    }
-
-    .footer-brand {
-        justify-content: center;
     }
 
     .whatsapp-float {
@@ -1662,7 +1637,6 @@ footer a {
 
     .hero {
         padding: 148px 0 28px;
-        background-attachment: scroll;
     }
 
     .hero-inner {
@@ -1708,11 +1682,6 @@ footer a {
         gap: 16px;
     }
 
-    .parallax-img {
-        height: 240px;
-        background-attachment: scroll;
-    }
-
     #areas.container,
     .office-shell {
         width: min(100% - 20px, 1540px);
@@ -1756,8 +1725,13 @@ footer a {
     }
 
     .office-layout {
+        flex-direction: column;
         gap: 28px;
         margin-bottom: 34px;
+    }
+
+    .office-content {
+        order: 1;
     }
 
     .office-lead-card {
@@ -1788,17 +1762,16 @@ footer a {
         font-size: 2.4rem;
     }
 
-    .office-mini-card span {
-        max-width: none;
-    }
-
     .office-image-stage {
         min-height: 300px;
-        max-height: 380px;
+        max-height: none;
+        aspect-ratio: 4 / 5;
         border-radius: 24px;
     }
 
     .office-image-panel {
+        width: 100%;
+        height: auto;
         padding: 12px;
         border-radius: 24px;
     }
@@ -1949,20 +1922,20 @@ footer a {
     }
 
     .nav-links {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 8px;
-        overflow-x: auto;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+        overflow: visible;
     }
 
     .nav-links a {
-        padding: 9px 10px;
-        font-size: 0.84rem;
+        padding: 10px 6px;
+        font-size: 0.88rem;
         text-align: center;
     }
 
     .hero {
-        padding-top: 130px;
+        padding-top: 142px;
     }
 
     .hero-inner {
@@ -2001,10 +1974,6 @@ footer a {
         height: 190px;
     }
 
-    .parallax-img {
-        height: 190px;
-    }
-
     .practice-card h3 {
         font-size: 1.75rem;
     }
@@ -2012,6 +1981,11 @@ footer a {
     .office-image-badge span {
         width: 100%;
         justify-content: center;
+    }
+
+    .office-image-stage {
+        min-height: 260px;
+        aspect-ratio: 4 / 5;
     }
 
     .contact-card img {
