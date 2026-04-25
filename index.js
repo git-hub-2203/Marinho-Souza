@@ -60,15 +60,49 @@ function trocarMapa(unidade, botao) {
     let activeSlide = primary;
     let inactiveSlide = secondary;
     let currentIndex = 0;
+    const slideDelay = 3600;
+    let isTransitioning = false;
 
-    window.setInterval(() => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        inactiveSlide.src = slides[currentIndex];
+    const preloadImage = (src) => new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve(src);
+        image.onerror = reject;
+        image.src = src;
+
+        if (image.complete) {
+            resolve(src);
+        }
+    });
+
+    slides.forEach((src, index) => {
+        if (index !== 0) preloadImage(src).catch(() => null);
+    });
+
+    const showNextSlide = async () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        const nextIndex = (currentIndex + 1) % slides.length;
+        const nextSrc = slides[nextIndex];
+
+        try {
+            await preloadImage(nextSrc);
+        } catch (error) {
+            isTransitioning = false;
+            return;
+        }
+
+        inactiveSlide.src = nextSrc;
         inactiveSlide.classList.add("is-active");
         activeSlide.classList.remove("is-active");
+
+        currentIndex = nextIndex;
 
         const previousActive = activeSlide;
         activeSlide = inactiveSlide;
         inactiveSlide = previousActive;
-    }, 3600);
+        isTransitioning = false;
+    };
+
+    window.setInterval(showNextSlide, slideDelay);
 })();
