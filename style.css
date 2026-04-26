@@ -1999,3 +1999,7 @@ footer a {
         height: 54px;
     }
 }
+
+.google-img:hover {
+    cursor: pointer;
+}
