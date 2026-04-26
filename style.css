@@ -1031,6 +1031,11 @@ h4 {
     background: rgba(255, 255, 255, 0.82);
     box-shadow: var(--shadow-sm);
     backdrop-filter: blur(10px);
+    transition: ease-out 0.25s all;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-12px);
 }
 
 .testimonial-card i {
@@ -1044,11 +1049,19 @@ h4 {
     font-size: 1rem;
     line-height: 1.9;
     margin-bottom: 22px;
+    text-align: justify;
 }
 
-.client-name {
-    font-weight: 700;
-    color: var(--primary);
+.testimonial-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #c8a46a;
+}
+
+.testimonial-rating i {
+    font-size: 1rem;
+    margin-bottom: 0;
 }
 
 .contact-section {

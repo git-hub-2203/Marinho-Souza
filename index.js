@@ -25,6 +25,22 @@ function trocarMapa(unidade, botao) {
 }
 
 (function () {
+    document.querySelectorAll('.testimonial-rating').forEach((ratingElement) => {
+        const ratingValue = Number.parseInt(ratingElement.dataset.rating || "5", 10);
+        const totalStars = 5;
+        const safeRating = Math.max(0, Math.min(totalStars, ratingValue));
+
+        ratingElement.innerHTML = "";
+
+        for (let index = 0; index < totalStars; index += 1) {
+            const star = document.createElement("i");
+            star.className = index < safeRating ? "fas fa-star" : "far fa-star";
+            ratingElement.appendChild(star);
+        }
+    });
+})();
+
+(function () {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
